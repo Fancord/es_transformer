@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  es_7:
+    image: elasticsearch:7.0.1
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+
+  test-app:
+    image: test-app
+    build:
+      context: ./app
+      #entrypoint:
+        #command:
+    depends_on:
+      - es_7
+    volumes:
+      - ./output:/output:rw

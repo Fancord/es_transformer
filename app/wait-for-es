@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -Eeu
+
+while ! curl -fv es_7:9200;do
+  echo "waiting for ES..."
+  sleep 10
+done
